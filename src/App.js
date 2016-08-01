@@ -1,21 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Step from './Step.js'
+import Widget from './Widget'
+import './App.css'
 
 class App extends Component {
+  state = {}
+  onPaste = (e) => {
+    console.log(e.clipboardData.getData('text/html'))
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          На этой странице можно узнать когда будет работать мобильный интернет в поезде.
         </p>
+        <Step number={1}>
+          <p className="App-intro">
+            Выберите станции отправления, прибытия и дату.
+          </p>
+          <Widget/>
+        </Step>
+        <Step number={2}>
+          <p className="App-intro">
+            Выберите рейс и перейдите на страницу маршрута.
+          </p>
+        </Step>
+        <Step number={3}>
+          <p className="App-intro">
+            Нажмите ctrl+A, ctrl+C чтобы скопировать страницу маршрута целиком и вставьте ее в это поле:
+          </p>
+          <textarea onPaste={this.onPaste} style={{width: 700, height: 50}}></textarea>
+        </Step>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
