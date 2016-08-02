@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Step from './Step.js'
 import Widget from './Widget'
+import extractRoute from './extractRoute'
+import convertRoute from './convertRoute'
 import './App.css'
 
 class App extends Component {
   state = {}
   onPaste = (e) => {
-    console.log(e.clipboardData.getData('text/html'))
+    this.setState({ route: convertRoute(extractRoute(e.clipboardData.getData('text/html'))) })
   }
   render() {
     return (
@@ -31,6 +33,9 @@ class App extends Component {
           </p>
           <textarea onPaste={this.onPaste} style={{width: 700, height: 50}}></textarea>
         </Step>
+        <div>
+          {JSON.stringify(this.state.route)}
+        </div>
       </div>
     )
   }
