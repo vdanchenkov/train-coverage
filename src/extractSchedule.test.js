@@ -9,6 +9,7 @@ describe('extractRoute', () => {
   it('works', () => {
     const schedule = extractSchedule(sample)
     expect(schedule).to.be.an('array')
+    expect(schedule.length).to.be.eql(16)
     expect(schedule[0]).to.be.eql([
       '9606096',
       'Самара',
