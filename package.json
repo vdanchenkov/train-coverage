@@ -13,8 +13,11 @@
     "react-scripts": "0.2.1"
   },
   "dependencies": {
+    "css-select": "^1.2.0",
+    "domutils": "^1.5.1",
     "entities": "^1.1.1",
     "geolib": "^2.0.21",
+    "htmlparser2": "^3.9.1",
     "mobile-coverage-russia": "0.0.0",
     "moment": "^2.14.1",
     "ramda": "^0.21.0",
