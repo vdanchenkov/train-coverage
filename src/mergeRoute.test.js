@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { default as convertRoute, findStationId }  from './convertRoute'
+import { default as mergeRoute, findStationId }  from './mergeRoute'
 import rawRoute from './fixtures/rawRoute'
 import rawSchedule from './fixtures/rawSchedule'
 

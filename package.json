@@ -18,7 +18,7 @@
     "entities": "^1.1.1",
     "geolib": "^2.0.21",
     "htmlparser2": "^3.9.1",
-    "mobile-coverage-russia": "0.0.0",
+    "mobile-coverage-russia": "0.0.2",
     "moment": "^2.14.1",
     "ramda": "^0.21.0",
     "react": "^15.2.1",

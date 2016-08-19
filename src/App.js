@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import Step from './Step.js'
 import Widget from './Widget'
-import extractRoute from './extractRoute'
-import convertRoute from './convertRoute'
 import './App.css'
+import Chart from './Chart'
+import process from './process'
 
 class App extends Component {
   url = (train) => `https://rasp.yandex.ru/threads/?number=${train}&train=yes`
-  state = {}
+  state = {
+    graph: []
+  }
   onSubmit = (e) => {
     window.open(this.url(this.state.trainNumber), '', 'width=500,height=700,left=400,top=100')
     e.preventDefault()
@@ -16,7 +18,8 @@ class App extends Component {
     this.setState({ trainNumber: e.target.value })
   }
   onPaste = (e) => {
-    this.setState({ route: convertRoute(extractRoute(e.clipboardData.getData('text/html'))) })
+    const html = e.clipboardData.getData('text/html')
+    process(html).then(({ route, schedule }) => this.setState({ route, schedule }))
     e.preventDefault()
   }
   render() {
@@ -34,9 +37,7 @@ class App extends Component {
           Переключитесь обратно на эту страницу и вставьте содержимое в поле расположенное ниже.
         </p>
         <textarea onPaste={this.onPaste} style={{width: 700, height: 50}}></textarea>
-        <div>
-          {JSON.stringify(this.state.route)}
-        </div>
+        <Chart route={this.state.route} schedule={this.state.schedule}/>
       </div>
     )
   }

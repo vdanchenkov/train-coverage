@@ -20,9 +20,10 @@ const parseTime = (timeElement, postfix) => {
 export default (html) => {
   const dom = parseDOM(html)
   return selectAll('tr.b-timetable__row', dom).map((row) => {
-    const link = selectOne('a.b-link', row)
-    const id = link.attribs.href.match(/\d+/)[0]
-    const title = getText(link) 
+    const station = selectOne('.b-timetable__city', row)
+    const link = selectOne('a', station)
+    const id = link && link.attribs.href.match(/\d+/)[0]
+    const title = getText(station)
     const arrival = parseTime(row, 'arrival')
     const departure = parseTime(row, 'departure')
     return [ id, title, arrival, departure ]

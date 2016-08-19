@@ -35,7 +35,8 @@ export const processQueue = ({ start, end, points }) => {
     }
     return {
       pixel: lonLatToPixel(zoom, point),
-      time: Math.round(start[3] + distanceCovered / speed)  
+      point,
+      time: Math.round(start[3] + distanceCovered / speed)
     }
   })
 }
